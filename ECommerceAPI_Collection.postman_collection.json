@@ -1,0 +1,353 @@
+{
+  "info": {
+    "name": "ECommerceAPI",
+    "_postman_id": "ecommerce-api-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "https://localhost:7179/api/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Test User\",\n  \"email\": \"testuser@test.com\",\n  \"password\": \"Test@1234\",\n  \"confirmPassword\": \"Test@1234\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login - User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "https://localhost:7179/api/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"testuser@test.com\",\n  \"password\": \"Test@1234\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login - Admin",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "https://localhost:7179/api/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@ecommerce.com\",\n  \"password\": \"Admin@123456\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "url": "https://localhost:7179/api/categories"
+          }
+        },
+        {
+          "name": "Get Category by ID",
+          "request": {
+            "method": "GET",
+            "url": "https://localhost:7179/api/categories/1"
+          }
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer PASTE_ADMIN_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/categories",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sports\",\n  \"description\": \"Sports and outdoor equipment\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer PASTE_ADMIN_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/categories/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Electronics Updated\",\n  \"description\": \"Updated description\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer PASTE_ADMIN_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/categories/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "url": "https://localhost:7179/api/products"
+          }
+        },
+        {
+          "name": "Get All Products - Filter by Category",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "https://localhost:7179/api/products?categoryId=1",
+              "query": [{ "key": "categoryId", "value": "1" }]
+            }
+          }
+        },
+        {
+          "name": "Get All Products - Filter by Name",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "https://localhost:7179/api/products?name=laptop",
+              "query": [{ "key": "name", "value": "laptop" }]
+            }
+          }
+        },
+        {
+          "name": "Get All Products - Pagination",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "https://localhost:7179/api/products?pageNumber=1&pageSize=3",
+              "query": [
+                { "key": "pageNumber", "value": "1" },
+                { "key": "pageSize", "value": "3" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "url": "https://localhost:7179/api/products/1"
+          }
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer PASTE_ADMIN_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/products",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Running Shoes\",\n  \"description\": \"Lightweight running shoes\",\n  \"price\": 89.99,\n  \"stock\": 30,\n  \"categoryId\": 2\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer PASTE_ADMIN_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/products/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Laptop Pro\",\n  \"description\": \"Updated 15-inch laptop\",\n  \"price\": 1099.99,\n  \"stock\": 20,\n  \"categoryId\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer PASTE_ADMIN_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/products/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "Get Cart",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer PASTE_USER_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/cart"
+          }
+        },
+        {
+          "name": "Add to Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer PASTE_USER_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/cart",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 1,\n  \"quantity\": 2\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Cart Item Quantity",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer PASTE_USER_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/cart",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": 1,\n  \"quantity\": 5\n}"
+            }
+          }
+        },
+        {
+          "name": "Remove from Cart",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer PASTE_USER_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/cart/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Place Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer PASTE_USER_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/orders"
+          }
+        },
+        {
+          "name": "View Orders History",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer PASTE_USER_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/orders"
+          }
+        },
+        {
+          "name": "Get Order Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer PASTE_USER_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/orders/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "File Management",
+      "item": [
+        {
+          "name": "Upload Image",
+          "request": {
+            "method": "POST",
+            "url": "https://localhost:7179/api/image/upload",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Set Product Image",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer PASTE_ADMIN_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/products/1/image",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Set Category Image",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer PASTE_ADMIN_TOKEN_HERE" }
+            ],
+            "url": "https://localhost:7179/api/categories/1/image",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
