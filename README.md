@@ -42,6 +42,35 @@ ECommerceAPI/
 
 ---
 
+## NuGet Packages
+
+### ECommerceAPI.DAL
+| Package | Version |
+|---------|---------|
+| Microsoft.AspNetCore.Identity.EntityFrameworkCore | 10.0.8 |
+| Microsoft.EntityFrameworkCore.SqlServer | 10.0.8 |
+| Microsoft.EntityFrameworkCore.Design | 10.0.8 |
+
+### ECommerceAPI.BL
+| Package | Version |
+|---------|---------|
+| AutoMapper | 12.0.1 |
+| FluentValidation | 11.9.2 |
+| System.IdentityModel.Tokens.Jwt | 8.0.0 |
+
+### ECommerceAPI (Presentation Layer)
+| Package | Version |
+|---------|---------|
+| AutoMapper.Extensions.Microsoft.DependencyInjection | 12.0.1 |
+| FluentValidation.AspNetCore | 11.3.0 |
+| Microsoft.AspNetCore.Authentication.JwtBearer | 10.0.8 |
+| Microsoft.AspNetCore.OpenApi | 10.0.8 |
+| Microsoft.EntityFrameworkCore.Design | 10.0.8 |
+| Microsoft.EntityFrameworkCore.Tools | 10.0.8 |
+| Scalar.AspNetCore | 2.14.14 |
+
+---
+
 ## Getting Started
 
 ### Prerequisites

@@ -25,12 +25,9 @@ logs/
 .DS_Store
 Thumbs.db
 
-## Claude
-.claude/
-
-## Uploaded images (don't push user uploads to git)
+## Uploaded images 
 ECommerceAPI/wwwroot/images/*
 !ECommerceAPI/wwwroot/images/.gitkeep
 
-## Environment-specific secrets (never push these)
+## Environment-specific secrets 
 appsettings.Development.json
